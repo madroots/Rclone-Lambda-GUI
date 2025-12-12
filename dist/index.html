@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Rclone Manager</title>
-    <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="cs16.min.css">
+    <link rel="stylesheet" href="style.css">
     <style>
         body {
             margin: 0;
@@ -96,38 +96,37 @@
 <body>
     <div class="main-container">
         <div class="header">
-            <div class="header-title">Rclone Remote Manager</div>
+            <div class="header-title">Rclone Lambda GUI</div>
             <div class="settings-icon" id="settings-btn">⚙️</div>
         </div>
-        
-        <div class="button-container">
-            <button class="cs-btn" id="debug-btn">Debug Test</button>
-            <button class="cs-btn" id="config-path-btn">Show Config Path</button>
-            <button class="cs-btn" id="add-remote-btn">Add Remote</button>
-            <button class="cs-btn" id="mount-btn">Mount</button>
-            <button class="cs-btn" id="unmount-btn">Unmount</button>
-            <button class="cs-btn" id="open-btn" disabled>Open Folder</button>
-            <button class="cs-btn" id="refresh-btn">Refresh</button>
-            <button class="cs-btn" id="test-btn">Test Connection</button>
+
+        <div class="remote-container">
+            <div class="remote-table-container">
+                <table id="remote-table">
+                    <thead>
+                        <tr>
+                            <th>Remote</th>
+                            <th>Type</th>
+                            <th>Mounted</th>
+                            <th>Cron</th>
+                            <th>Mount Point</th>
+                        </tr>
+                    </thead>
+                    <tbody id="remote-table-body">
+                        <!-- Data will be populated by JavaScript -->
+                    </tbody>
+                </table>
+            </div>
+            <div class="buttons-inline">
+                <button class="cs-btn" id="add-remote-btn">Add Remote</button>
+                <button class="cs-btn" id="mount-btn">Mount</button>
+                <button class="cs-btn" id="unmount-btn">Unmount</button>
+                <button class="cs-btn" id="open-btn" disabled>Open Folder</button>
+                <button class="cs-btn" id="refresh-btn">Refresh</button>
+                <button class="cs-btn" id="test-btn">Test Connection</button>
+            </div>
         </div>
-        
-        <div class="remote-table-container">
-            <table id="remote-table">
-                <thead>
-                    <tr>
-                        <th>Remote</th>
-                        <th>Type</th>
-                        <th>Mounted</th>
-                        <th>Cron</th>
-                        <th>Mount Point</th>
-                    </tr>
-                </thead>
-                <tbody id="remote-table-body">
-                    <!-- Data will be populated by JavaScript -->
-                </tbody>
-            </table>
-        </div>
-        
+
         <div class="status-bar">
             <div class="status-text" id="status-text">Ready</div>
             <div class="version-text">v1.0.6</div>
@@ -135,5 +134,6 @@
     </div>
 
     <script type="module" src="app.js"></script>
+
 </body>
 </html>

@@ -1,0 +1,267 @@
+/* CS 1.6 Steam Theme Styling for Tauri App */
+
+/* CSS variables for CS 1.6 theme colors */
+:root {
+    --bg: #4a5942; /* Dark green background */
+    --secondary-bg: #3e4637; /* Slightly lighter green */
+    --accent: #c4b550; /* Gold/yellow accent */
+    --secondary-accent: #958831; /* Darker gold */
+    --text: #dedfd6; /* Light gray text */
+    --secondary-text: #d8ded3; /* Slightly darker gray */
+    --text-3: #a0aa95; /* Even darker gray */
+    --border-light: #8c9284; /* Light border */
+    --border-dark: #292c21; /* Dark border */
+    --disabled-text: #292c21; /* Disabled text */
+    --disabled-text-shadow: #75806f; /* Text shadow for disabled */
+    --outline: #000; /* Black outline */
+    --slider: #7f8c7f; /* Slider color */
+    --slider-bg: #1f1f1f; /* Slider background */
+    --scrollbar-track: #5a6a50; /* Scrollbar track */
+}
+
+/* General styles */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 10px;
+    line-height: 1.5;
+    height: calc(100vh - 20px);
+    display: flex;
+    flex-direction: column;
+}
+
+/* Container for table and buttons - unified appearance */
+.remote-container {
+    background-color: var(--bg); /* Same as outside container */
+    border: 1px solid var(--border-light);
+    border-right: 1px solid var(--border-dark);
+    border-bottom: 1px solid var(--border-dark);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    margin: 10px 0;
+    min-height: 0; /* Allow flex child to be smaller than content */
+}
+
+.remote-table-container {
+    flex: 1;
+    overflow: auto; /* Revert to auto for proper scrolling */
+    margin-bottom: 5px;
+    padding: 5px; /* Add padding to match buttons */
+}
+
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--secondary-bg);
+    margin: 0;
+    border: 1px solid var(--border-light);
+    border-right: 1px solid var(--border-dark);
+    border-bottom: 1px solid var(--border-dark);
+    border-left: 1px solid var(--border-light);
+}
+
+
+
+th, td {
+    padding: 1px 2px; /* Minimal padding to make rows extremely thin */
+    text-align: left;
+    border: none !important; /* Remove inner cell borders, force override */
+    line-height: 12px; /* Reduced line height to make rows thinner */
+    height: 14px; /* Reduced height */
+}
+
+th {
+    background-color: var(--bg) !important;
+    color: var(--text) !important; /* Same color as other text, force override */
+    height: 14px !important;
+    line-height: 12px !important;
+    border-top: 1px solid var(--border-dark) !important; /* Top border */
+    border-bottom: 1px solid var(--border-dark) !important; /* Bottom border */
+    border-right: 1px solid var(--border-dark) !important; /* Right border to separate cells */
+    border-left: 0 !important; /* No left border by default */
+    font-weight: normal !important; /* Not bold */
+}
+
+/* Make sure the first cell has proper left border */
+th:first-child {
+    border-left: 1px solid var(--border-dark) !important; /* First header cell has left border */
+}
+
+tr.mounted {
+    background-color: var(--secondary-bg);
+}
+
+tr {
+    border: none !important; /* Ensure no borders on rows */
+}
+
+
+/* Button styles */
+.cs-btn {
+    background-color: var(--bg);
+    border: 1px solid;
+    border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+    color: white;
+    font-size: 16px;
+    line-height: 15px;
+    padding: 4px 5px 3px;
+    user-select: none;
+    margin: 0 2px;
+    cursor: pointer;
+}
+
+.cs-btn:hover {
+    background-color: var(--secondary-bg);
+}
+
+.cs-btn:active {
+    border-color: var(--border-dark) var(--border-light) var(--border-light) var(--border-dark);
+}
+
+.cs-btn:disabled {
+    color: var(--disabled-text);
+    pointer-events: none;
+    text-shadow: var(--disabled-text-shadow) 1px 1px;
+}
+
+/* Status text */
+.status-text {
+    color: var(--text);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+    width: 18px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: var(--scrollbar-track);
+    border: 1px solid var(--border-dark);
+    border-left: 0;
+    width: 18px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--bg);
+    border: 1px solid;
+    border-color: var(--border-light) var(--border-dark) var(--border-dark) var(--border-light);
+    width: 17px;
+}
+
+/* Header styling */
+.header-title {
+    color: var(--secondary-text) !important; /* Less bright white */
+    font-weight: normal !important; /* No bold, force override */
+    font-size: 14px !important; /* A bit bigger for better visibility */
+    font-family: Arial, sans-serif !important; /* Same font as rest of app */
+    text-rendering: optimizeLegibility !important;
+    -webkit-font-smoothing: antialiased !important;
+    -moz-osx-font-smoothing: grayscale !important;
+    display: inline-block !important; /* Ensure proper rendering */
+}
+
+/* Settings icon styling */
+.settings-icon {
+    cursor: pointer;
+    font-size: 18px;
+    color: var(--text-3);
+}
+
+.settings-icon:hover {
+    color: var(--accent);
+}
+
+/* Buttons placed directly in main container with same background as outside */
+.buttons-inline {
+    display: flex;
+    padding: 5px;
+    background-color: var(--bg); /* Same as main container background */
+    gap: 2px;
+    flex-wrap: wrap;
+}
+
+/* Progress modal styles - CS 1.6 theme */
+.progress-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10000;
+}
+
+.progress-modal-content {
+  background-color: var(--bg);
+  border: 1px solid var(--border-light);
+  border-right: 1px solid var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
+  border-left: 1px solid var(--border-light);
+  width: 400px;
+  padding: 0;
+  border-radius: 0; /* Keep square corners like CS */
+}
+
+.progress-header {
+  background-color: var(--bg);
+  padding: 8px;
+  border-bottom: 1px solid var(--border-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.progress-title {
+  color: var(--accent);
+  font-weight: bold;
+  margin: 0;
+}
+
+.progress-body {
+  padding: 15px;
+}
+
+.progress-message {
+  color: var(--text);
+  margin-bottom: 15px;
+  margin-top: 0;
+}
+
+/* Style for the progress bar container - use cs16 defaults but ensure app compatibility */
+.cs-progress-bar {
+  width: 100%;
+  background: var(--bg); /* Use our theme's background */
+}
+
+/* Style for the progress bar fill - use app's accent color but maintain cs16 structure */
+.bars {
+  background-color: var(--accent); /* Use our theme's accent color */
+  width: 0%;
+  transition: width 0.3s ease;
+}
+
+.progress-footer {
+  padding: 10px;
+  border-top: 1px solid var(--border-light);
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Version text */
+.version-text {
+    color: var(--text-3);
+    font-size: 12px;
+}

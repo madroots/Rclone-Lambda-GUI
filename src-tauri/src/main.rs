@@ -69,7 +69,7 @@ async fn get_remotes() -> Result<Vec<Remote>, String> {
     let mut current_section = String::new();
     let mut current_type = String::new();
 
-    for (line_num, line) in config_content.lines().enumerate() {
+    for (_, line) in config_content.lines().enumerate() {
         let line = line.trim();
 
         // Skip empty lines and comments
@@ -586,9 +586,14 @@ fn main() {
             add_remote_with_plugin
         ])
         .setup(|app| {
-            // Set window title
-            let window = app.get_webview_window("main").unwrap();
-            window.set_title("Rclone Manager").unwrap();
+            // Set window title - add error handling
+            if let Some(window) = app.get_webview_window("main") {
+                if let Err(e) = window.set_title("Rclone Manager") {
+                    eprintln!("Failed to set window title: {}", e);
+                }
+            } else {
+                eprintln!("Failed to get main window");
+            }
             Ok(())
         })
         .run(tauri::generate_context!())
